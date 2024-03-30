@@ -1,0 +1,5 @@
+# 非公開情報
+.streamlit/secrets.toml
+
+# mysql
+/data

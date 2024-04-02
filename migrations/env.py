@@ -5,9 +5,9 @@ from sqlalchemy import pool
 
 from alembic import context
 
-import models.foo
-import models.bar
-import database
+import models.code_step
+
+import database as database
 
 
 # this is the Alembic Config object, which provides

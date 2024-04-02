@@ -1,5 +1,11 @@
 # app.py
 import streamlit as st
+from database import SessionLocal
+from models.code_step import CodeStep
+
+session = SessionLocal()
+for r in session.query(CodeStep).all():
+  st.write(r.step, r.code)
 
 st.title("app")
 

@@ -19,3 +19,11 @@ def mysqlStart(c):
 @task
 def mysqlEnd(c):
     c.run('docker compose down')
+
+@task
+def mg_auto(c):
+    c.run('alembic revision --autogenerate')
+
+@task
+def mg_head(c):
+    c.run('alembic upgrade head')

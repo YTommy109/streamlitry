@@ -1,6 +1,10 @@
 from fabric import task
 
 @task
+def list(c):
+    c.run('fab --list')
+
+@task
 def freeze(c):
     c.run('uv pip freeze > requirements.txt')
 

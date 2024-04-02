@@ -6,6 +6,7 @@ services:
     ports:
       - 3306:3306
     environment:
+      MYSQL_DATABASE: firstdb
       MYSQL_ROOT_PASSWORD: root
       TZ: Asia/Tokyo
     volumes:

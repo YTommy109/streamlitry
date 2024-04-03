@@ -12,4 +12,4 @@ class CodeStep(Base):
     code = Column(Text, comment="コード")
     created_at = Column(TIMESTAMP, server_default=current_timestamp(), comment="作成日時")
     updated_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'), comment="更新日時")
-    ignored_at = Column(TIMESTAMP, comment="無効日時")
+    ignored_at = Column(TIMESTAMP, nullable=True, server_default=None, comment="無効日時")

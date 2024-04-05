@@ -4,13 +4,8 @@ from database import SessionLocal
 from models.code_step import CodeStep
 
 def code_step_panel(labels: list[str]) -> None:
-  col1, col2 = st.columns([1, 5])
-
-  with col1:
-    chose: int = st.radio('Steps:', options=range(len(labels)), format_func=labels.__getitem__)
-
-  with col2:
-    st.code(code_steps[chose].code, language="python", line_numbers=True)
+  chose: int = st.slider('Steps', min_value=0, max_value=len(labels)-1, value=0, step=1)
+  st.code(code_steps[chose].code, language="python", line_numbers=True)
 
 session: SessionLocal = SessionLocal()
 code_steps: list[CodeStep] = session.query(CodeStep).order_by(CodeStep.step).all()

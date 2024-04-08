@@ -21,9 +21,20 @@ def mysqlEnd(c):
     c.run('docker compose down')
 
 @task
-def mg_auto(c):
-    c.run('alembic revision --autogenerate')
+def mg_auto(c, msg):
+    cmd = 'alembic revision --autogenerate'
+    if msg:
+        cmd += f' -m "{msg}"'
+    c.run(cmd)
 
 @task
 def mg_head(c):
     c.run('alembic upgrade head')
+
+@task
+def mg_down(c):
+    c.run('alembic downgrade -1')
+
+@task
+def mg_reset(c):
+    c.run('alembic downgrade base')

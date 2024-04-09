@@ -12,7 +12,7 @@ def code_step_panel() -> None:
   """
   code_steps = st.session_state['CodeStep']
   if len(code_steps) > 0:
-    chose: int = st.slider('Steps', min_value=0, max_value=len(code_steps)-1, value=0, step=1)
+    chose: int = 0 if len(code_steps) == 1 else st.slider('Steps', min_value=0, max_value=len(code_steps)-1, value=0, step=1)
     st.code(code_steps[chose].code, language="python", line_numbers=True)
 
   newCode = st.text_area("Code")
@@ -34,9 +34,14 @@ def topic_panel() -> None:
   topic = st.text_input("Topic")
   if st.button("Add"):
     addTopic(Topic(topic=topic))
+    st.rerun()
 
-lc, rc = st.columns(2)
-with lc:
-  topic_panel()
-with rc:
-  code_step_panel()
+def container() -> None:
+  lc, rc = st.columns((3,7))
+  with lc:
+    topic_panel()
+  with rc:
+    code_step_panel()
+
+if __name__ == "__main__":
+  container()

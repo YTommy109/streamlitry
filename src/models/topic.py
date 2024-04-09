@@ -1,7 +1,9 @@
+from database import Base
 from sqlalchemy import Column, Integer, Text
 from sqlalchemy.orm import relationship
-from database import Base
+
 from .timestamp_mixin import TimestampMixin
+
 
 class Topic(Base, TimestampMixin):
     __tablename__ = "topic"
@@ -10,3 +12,6 @@ class Topic(Base, TimestampMixin):
     topic = Column(Text, nullable=False, comment="トピック")
 
     code_step = relationship("CodeStep")
+
+    def __init__(self, topic):
+        self.topic = topic

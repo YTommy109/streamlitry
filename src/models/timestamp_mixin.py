@@ -1,4 +1,4 @@
-from sqlalchemy import Column, TIMESTAMP
+from sqlalchemy import TIMESTAMP, Column
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.functions import current_timestamp

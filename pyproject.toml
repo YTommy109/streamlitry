@@ -1,2 +1,26 @@
+[project]
+name = "streamlitry"
+dynamic = ["version"]
+requires-python = ">= 3.12"
+license = {file = "LICENSE"}
+dependencies = [
+  "streamlit>1.32.2",
+  "alembic>1.13.1",
+  "sqlalchemy>2.0.29"
+]
+
 [tool.mypy]
 plugins = ["sqlalchemy.ext.mypy.plugin",]
+
+[tool.pytest-watcher]
+now = true
+clear = true
+delay = 0.2
+runner = "pytest"
+runner_args = []
+patterns = ["*.py"]
+ignore_patterns = []
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests",]

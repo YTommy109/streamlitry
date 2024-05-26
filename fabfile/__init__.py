@@ -1,8 +1,21 @@
 from fabric import task
 
+
 @task
 def list(c):
     c.run('fab --list')
+
+@task
+def run(c):
+    c.run('streamlit run src/app.py')
+
+@task
+def test_watch(c):
+    c.run('pytest-watcher .')
+
+@task
+def coverage(c):
+    c.run('pytest --cov --cov-branch')
 
 @task
 def freeze(c):
